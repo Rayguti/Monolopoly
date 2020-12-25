@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package Tablero;
 
 import java.awt.Button;
@@ -35,6 +36,7 @@ public class Tablero extends javax.swing.JFrame {
         initComponents();
         setIconImage(new ImageIcon("src/imagenes/icono.png").getImage());
         crearCasillas();
+        //jPanel1.setBackground(new java.awt.Color(51,255,153));
     }
 
     /**
@@ -47,24 +49,34 @@ public class Tablero extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        Logo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1000, 680));
+        setPreferredSize(new java.awt.Dimension(1200, 680));
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(51, 255, 153));
         jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jPanel1.setPreferredSize(new java.awt.Dimension(836, 720));
+        jPanel1.setPreferredSize(new java.awt.Dimension(836, 680));
+
+        Logo.setBackground(new java.awt.Color(0, 51, 51));
+        Logo.setIcon(new ImageIcon("src/Imagenes/icono.png"));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 836, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(209, 209, 209)
+                .addComponent(Logo)
+                .addContainerGap(627, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 720, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(82, 82, 82)
+                .addComponent(Logo)
+                .addContainerGap(598, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -97,108 +109,237 @@ public class Tablero extends javax.swing.JFrame {
     }
     public void crearCasillas(){
         JButton newButton;
+        JLabel newLabel;
         int x=0;
         int y=0;
         for(int i=0;i<10;i+=1){
+            newLabel=null;
             switch(i){
                 case 0:
-                    newButton = crearBoton(x, y, 76, 58, "Libre",tipoCasilla.ESQUINA);
+                    newButton = crearBoton(x, y, 76, 58, "Libre",tipoCasilla.ESQUINA,"");
                     break;
                 case 1:
-                    newButton = crearBoton(x, y, 76, 58, "Roja",tipoCasilla.ROJA);
+                    newButton = crearBoton(x, y, 76, 58, "$220",tipoCasilla.ROJA,"Kentocky_Ave");
+                    newLabel = crearLabel(x, y, Color.red);
                     break;
                 case 2:
-                    newButton = crearBoton(x, y, 76, 58, "Fortuna",tipoCasilla.FORTUNA);
+                    newButton = crearBoton(x, y, 76, 58, "Fortuna",tipoCasilla.FORTUNA,"");
                     break;
                 case 3:
-                    newButton = crearBoton(x, y, 76, 58, "Roja",tipoCasilla.ROJA);
+                    newButton = crearBoton(x, y, 76, 58, "$220",tipoCasilla.ROJA,"Indiana_Ave");
+                    newLabel = crearLabel(x, y, Color.red);
                     break;
                 case 4:
-                    newButton = crearBoton(x, y, 76, 58, "Roja",tipoCasilla.ROJA);
+                    newButton = crearBoton(x, y, 76, 58, "$240",tipoCasilla.ROJA,"Illinois_Ave");
+                    newLabel = crearLabel(x, y, Color.red);
                     break;
                 case 5:
-                    newButton = crearBoton(x, y, 76, 58, "Estacion",tipoCasilla.ESTACION);
+                    newButton = crearBoton(x, y, 76, 58, "$200",tipoCasilla.ESTACION,"");
                     break;
                 case 6:
-                    newButton = crearBoton(x, y, 76, 58, "Amarillo",tipoCasilla.AMARILLO);
+                    newButton = crearBoton(x, y, 76, 58, "$260",tipoCasilla.AMARILLO,"");
+                    newLabel = crearLabel(x, y, Color.yellow);
                     break;
                 case 7:
-                    newButton = crearBoton(x, y, 76, 58, "Amarillo",tipoCasilla.AMARILLO);
+                    newButton = crearBoton(x, y, 76, 58, "$260",tipoCasilla.AMARILLO,"");
+                    newLabel = crearLabel(x, y, Color.yellow);
                     break;
                 case 8:
-                    newButton = crearBoton(x, y, 76, 58, "Impuesto",tipoCasilla.IMPUESTO);
-                    break;
+                    newButton = crearBoton(x, y, 76, 58, "$150",tipoCasilla.IMPUESTO,"");
+                    break;//Servicio de agua
                 case 9:
-                    newButton = crearBoton(x, y, 76, 58, "Amarillo",tipoCasilla.AMARILLO);
+                    newButton = crearBoton(x, y, 76, 58, "$280",tipoCasilla.AMARILLO,"");
+                    newLabel = crearLabel(x, y, Color.yellow);
                     break;
                 default:
-                    newButton = crearBoton(x, y, 76, 58, "hola",tipoCasilla.ESQUINA);
+                    newButton = crearBoton(x, y, 76, 58, "hola",tipoCasilla.ESQUINA,"");
                 
+            }
+            
+            if(newLabel!=null){
+                newLabel.setVisible(true);
+                jPanel1.add(newLabel);
             }
             jPanel1.add(newButton);
             x+=76;
         }
         y=0;
         for(int i=0;i<11;i++){
-            newButton = crearBoton(x, y, 76, 58, "hola",tipoCasilla.AMARILLO);
+            newLabel=null;
+            switch(i){
+                case 0:
+                    newButton = crearBoton(x, y, 76, 58, "<html>A la carcel<html>",tipoCasilla.ESQUINA,"");
+                    break;
+                case 1:
+                    newButton = crearBoton(x, y, 76, 58, "$300",tipoCasilla.VERDE,"");
+                    newLabel = crearLabel(x, y, Color.green);
+                    break;
+                case 2:
+                    newButton = crearBoton(x, y, 76, 58, "$300",tipoCasilla.VERDE,"");
+                    newLabel = crearLabel(x, y, Color.green);
+                    break;
+                case 3:
+                    newButton = crearBoton(x, y, 76, 58, "Arca",tipoCasilla.ARCA,"");
+                    break;
+                case 4:
+                    newButton = crearBoton(x, y, 76, 58, "$320",tipoCasilla.VERDE,"");
+                    newLabel = crearLabel(x, y, Color.green);
+                    break;
+                case 5:
+                    newButton = crearBoton(x, y, 76, 58, "$200",tipoCasilla.ESTACION,"");
+                    break;
+                case 6:
+                    newButton = crearBoton(x, y, 76, 58, "Fortuna",tipoCasilla.FORTUNA,"");
+                    break;
+                case 7:
+                    newButton = crearBoton(x, y, 76, 58, "$350",tipoCasilla.AZUL,"");
+                    newLabel = crearLabel(x, y, Color.blue);
+                    break;
+                case 8:
+                    newButton = crearBoton(x, y, 76, 58, "$75",tipoCasilla.IMPUESTO,"");
+                    break;//impuesto a lujos
+                case 9:
+                    newButton = crearBoton(x, y, 76, 58, "$400",tipoCasilla.AZUL,"");
+                    newLabel = crearLabel(x, y, Color.blue);
+                    break;
+                case 10:
+                    newButton = crearBoton(x, y, 76, 58, "Esquina",tipoCasilla.ESQUINA,"");
+                    break;
+                default:
+                    newButton = crearBoton(x, y, 76, 58, "hola",tipoCasilla.ESQUINA,"");
+            }
+  
+            if(newLabel!=null){
+                newLabel.setVisible(true);
+                jPanel1.add(newLabel);
+            }
             jPanel1.add(newButton);
             y+=58;
         }
         y-=58;
         x-=76;
         for(int i=10;i>0;i--){
-            newButton = crearBoton(x, y, 76, 58, "hola",tipoCasilla.AMARILLO);
+            newLabel=null;
+            switch(i){
+                case 10:
+                    newButton = crearBoton(x, y, 76, 58, "$60",tipoCasilla.CAFE,"");
+                    newLabel = crearLabel(x, y, new java.awt.Color(204, 102, 0));//cafe
+                    break;
+                case 9:
+                    newButton = crearBoton(x, y, 76, 58, "Arca",tipoCasilla.ARCA,"");
+                    break;
+                case 8:
+                    newButton = crearBoton(x, y, 76, 58, "$60",tipoCasilla.CAFE,"");
+                    newLabel = crearLabel(x, y, new java.awt.Color(204, 102, 0));//cafe
+                    break;
+                case 7:
+                    newButton = crearBoton(x, y, 76, 58, "<html>10% or $200<html>",tipoCasilla.IMPUESTO,"");
+                    break;
+                case 6:
+                    newButton = crearBoton(x, y, 76, 58, "$200",tipoCasilla.ESTACION,"");
+                    break;
+                case 5:
+                    newButton = crearBoton(x, y, 76, 58, "$100",tipoCasilla.CELESTE,"");
+                    newLabel = crearLabel(x, y, Color.cyan);
+                    break;
+                case 4:
+                    newButton = crearBoton(x, y, 76, 58, "Fortuna",tipoCasilla.FORTUNA,"");
+                    break;
+                case 3:
+                    newButton = crearBoton(x, y, 76, 58, "$100",tipoCasilla.CELESTE,"");
+                    newLabel = crearLabel(x, y, Color.cyan);
+                    break;
+                case 2:
+                    newButton = crearBoton(x, y, 76, 58, "$120",tipoCasilla.CELESTE,"");
+                    newLabel = crearLabel(x, y, Color.cyan);
+                    break;
+                case 1:
+                    newButton = crearBoton(x, y, 76, 58, "Carcel",tipoCasilla.ESQUINA,"");
+                    break;
+                default:
+                    newButton = crearBoton(x, y, 76, 58, "hola",tipoCasilla.ESQUINA,"");
+            }
+            if(newLabel!=null){
+                newLabel.setVisible(true);
+                jPanel1.add(newLabel);
+            }
             jPanel1.add(newButton);
             x-=76;
         }
         y-=58;
         x=0;
-        for(int i=10;i>0;i--){
-            newButton = crearBoton(x, y, 76, 58, "hola",tipoCasilla.AMARILLO);
+        for(int i=9;i>0;i--){
+            newLabel=null;
+            switch(i){
+                case 9:
+                    newButton = crearBoton(x, y, 76, 58, "$140",tipoCasilla.ROSA,"");
+                    newLabel = crearLabel(x, y,Color.pink);
+                    break;
+                case 8:
+                    newButton = crearBoton(x, y, 76, 58, "$150",tipoCasilla.IMPUESTO,"");
+                    break;//servicio de luz
+                case 7:
+                    newButton = crearBoton(x, y, 76, 58, "$140",tipoCasilla.ROSA,"");
+                    newLabel = crearLabel(x, y,Color.pink);
+                    break;
+                case 6:
+                    newButton = crearBoton(x, y, 76, 58, "$160",tipoCasilla.ROSA,"");
+                    newLabel = crearLabel(x, y,Color.pink);
+                    break;
+                case 5:
+                    newButton = crearBoton(x, y, 76, 58, "$200",tipoCasilla.ESTACION,"");
+                    break;
+                case 4:
+                    newButton = crearBoton(x, y, 76, 58, "180",tipoCasilla.NARANJA,"");
+                    newLabel = crearLabel(x, y,Color.orange);
+                    break;
+                case 3:
+                    newButton = crearBoton(x, y, 76, 58, "Fortuna",tipoCasilla.FORTUNA,"");
+                    break;
+                case 2:
+                    newButton = crearBoton(x, y, 76, 58, "180",tipoCasilla.NARANJA,"");
+                    newLabel = crearLabel(x, y,Color.orange);
+                    break;
+                case 1:
+                    newButton = crearBoton(x, y, 76, 58, "200",tipoCasilla.NARANJA,"");
+                    newLabel = crearLabel(x, y,Color.orange);
+                    break;
+                default:
+                    newButton = crearBoton(x, y, 76, 58, "hola",tipoCasilla.ESQUINA,"");
+            }
+            if(newLabel!=null){
+                newLabel.setVisible(true);
+                jPanel1.add(newLabel);
+            }
             jPanel1.add(newButton);
             y-=58;
         }
-
-        //fondo.add(newlabel);
-        //for(int i=0;i<5;i++){
-        /*newButton = crearBoton(x, y, 76, 58, "hola");
-        jPanel1.add(newButton);
-        x=0;
-        newButton = crearBoton(x, y, 76, 58, "hola");
-        jPanel1.add(newButton);
-        y=0;
-        newButton = crearBoton(x, y, 76, 58, "hola");
-        jPanel1.add(newButton);
-        x=684;
-        newButton = crearBoton(x, y, 76, 58, "hola");
-        jPanel1.add(newButton);*/
     }
     //los primeros dos enteros sirven para setear la localizacion
     //los segundos dos sirven para cambiar el tamaño
     public JButton crearBoton(int x,int y,
-            int weight, int height,String text,tipoCasilla tc){
+            int weight, int height,String text,
+                tipoCasilla tc,String nombre){
         
         JButton newButton;
-        JLabel newLabel;
         newButton = new JButton(text);
         newButton.setBackground(new java.awt.Color(51,255,153));
-        newButton.setFont(new java.awt.Font("Tahoma", 0, 10));
+        //newButton.setBackground(Color.WHITE);
+        newButton.setFont(new java.awt.Font("Arial", 0, 10));
         newButton.setSize(weight,height);
         newButton.setOpaque(false);
         newButton.setLocation(x, y);
-        newButton.addActionListener(new AccionCasilla(tc));
+        newButton.addActionListener(new AccionCasilla(tc,nombre));
         //newButton.setVisible(false);
-        
-        newLabel =new JLabel();
-        newLabel.setBackground(Color.red);
+        return newButton;
+    }
+    public JLabel crearLabel(int x,int y, Color c){
+        JLabel newLabel =new JLabel();
+        newLabel.setBackground(c);
         newLabel.setSize(70, 20);
         newLabel.setOpaque(true);
         newLabel.setLocation(x+3, y+3);
-        jPanel1.add(newLabel);
-        return newButton;
-    }
-    public JLabel crearLabel(){
-        JLabel newLabel =new JLabel();
+        //newLabel.set
         
         return newLabel;
     }
@@ -238,6 +379,7 @@ public class Tablero extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Logo;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
     
@@ -257,46 +399,16 @@ public class Tablero extends javax.swing.JFrame {
 }
 class AccionCasilla implements ActionListener{
     tipoCasilla TC;
-    public AccionCasilla(tipoCasilla tc){
+    String nombre;
+    public AccionCasilla(tipoCasilla tc,String nombre){
         this.TC=tc;
+        this.nombre=nombre; 
     }
     @Override
     public void actionPerformed(ActionEvent arg0) {
-        switch (TC){
-            case ESQUINA:
-                JOptionPane.showMessageDialog(null, "Esquina");
-                break;
-            case CAFE:
-                break;
-            case AMARILLO:
-                JOptionPane.showMessageDialog(null, "Amarillo");
-                break;
-            case CELESTE:
-                break;
-            case ROJA:
-                JOptionPane.showMessageDialog(null, "Roja");
-                break;
-            case NARANJA:
-                break;
-            case ROSA:
-                break;
-             case AZUL:
-                break;
-            case FORTUNA:
-                JOptionPane.showMessageDialog(null, "Fortuna");
-                break;
-            case ARCA:
-                break;
-            case ESTACION:
-                JOptionPane.showMessageDialog(null, "Estacion");
-                break;
-            case IMPUESTO:
-                JOptionPane.showMessageDialog(null, "Impuesto");
-                break;
-            default:
-                JOptionPane.showMessageDialog(null, "Hola XD");
-        }
         
+        JOptionPane.showMessageDialog(null, "", nombre,
+            JOptionPane.OK_OPTION, new ImageIcon("src/Imagenes/"+nombre+".png"));
     }
     
     
@@ -314,6 +426,7 @@ enum tipoCasilla{
     FORTUNA,
     ARCA,
     ESTACION,
+    SERVICIO,
     IMPUESTO;
 }
 
