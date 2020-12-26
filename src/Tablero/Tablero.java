@@ -116,14 +116,14 @@ public class Tablero extends javax.swing.JFrame {
             newLabel=null;
             switch(i){
                 case 0:
-                    newButton = crearBoton(x, y, 76, 58, "Libre",tipoCasilla.ESQUINA,"");
+                    newButton = crearBoton(x, y, 76, 58, "Libre",tipoCasilla.ESQUINA,"Free_Parking");
                     break;
                 case 1:
                     newButton = crearBoton(x, y, 76, 58, "$220",tipoCasilla.ROJA,"Kentocky_Ave");
                     newLabel = crearLabel(x, y, Color.red);
                     break;
                 case 2:
-                    newButton = crearBoton(x, y, 76, 58, "Fortuna",tipoCasilla.FORTUNA,"");
+                    newButton = crearBoton(x, y, 76, 58, "Fortuna",tipoCasilla.FORTUNA,"Chance");
                     break;
                 case 3:
                     newButton = crearBoton(x, y, 76, 58, "$220",tipoCasilla.ROJA,"Indiana_Ave");
@@ -134,21 +134,21 @@ public class Tablero extends javax.swing.JFrame {
                     newLabel = crearLabel(x, y, Color.red);
                     break;
                 case 5:
-                    newButton = crearBoton(x, y, 76, 58, "$200",tipoCasilla.ESTACION,"");
+                    newButton = crearBoton(x, y, 76, 58, "$200",tipoCasilla.ESTACION,"B&O_Railroad");
                     break;
                 case 6:
-                    newButton = crearBoton(x, y, 76, 58, "$260",tipoCasilla.AMARILLO,"");
+                    newButton = crearBoton(x, y, 76, 58, "$260",tipoCasilla.AMARILLO,"Atlantic_Ave");
                     newLabel = crearLabel(x, y, Color.yellow);
                     break;
                 case 7:
-                    newButton = crearBoton(x, y, 76, 58, "$260",tipoCasilla.AMARILLO,"");
+                    newButton = crearBoton(x, y, 76, 58, "$260",tipoCasilla.AMARILLO,"Ventnor_Ave");
                     newLabel = crearLabel(x, y, Color.yellow);
                     break;
                 case 8:
-                    newButton = crearBoton(x, y, 76, 58, "$150",tipoCasilla.IMPUESTO,"");
+                    newButton = crearBoton(x, y, 76, 58, "$150",tipoCasilla.SERVICIO,"Water_Works");
                     break;//Servicio de agua
                 case 9:
-                    newButton = crearBoton(x, y, 76, 58, "$280",tipoCasilla.AMARILLO,"");
+                    newButton = crearBoton(x, y, 76, 58, "$280",tipoCasilla.AMARILLO,"Marvin_Gardens");
                     newLabel = crearLabel(x, y, Color.yellow);
                     break;
                 default:
@@ -168,42 +168,42 @@ public class Tablero extends javax.swing.JFrame {
             newLabel=null;
             switch(i){
                 case 0:
-                    newButton = crearBoton(x, y, 76, 58, "<html>A la carcel<html>",tipoCasilla.ESQUINA,"");
+                    newButton = crearBoton(x, y, 76, 58, "<html>A la carcel<html>",tipoCasilla.ESQUINA,"Go_To_Jail");
                     break;
                 case 1:
-                    newButton = crearBoton(x, y, 76, 58, "$300",tipoCasilla.VERDE,"");
+                    newButton = crearBoton(x, y, 76, 58, "$300",tipoCasilla.VERDE,"Pacific_Ave");
                     newLabel = crearLabel(x, y, Color.green);
                     break;
                 case 2:
-                    newButton = crearBoton(x, y, 76, 58, "$300",tipoCasilla.VERDE,"");
+                    newButton = crearBoton(x, y, 76, 58, "$300",tipoCasilla.VERDE,"No_Carolina_Ave");
                     newLabel = crearLabel(x, y, Color.green);
                     break;
                 case 3:
-                    newButton = crearBoton(x, y, 76, 58, "Arca",tipoCasilla.ARCA,"");
+                    newButton = crearBoton(x, y, 76, 58, "Arca",tipoCasilla.ARCA,"Community_Chest");
                     break;
                 case 4:
-                    newButton = crearBoton(x, y, 76, 58, "$320",tipoCasilla.VERDE,"");
+                    newButton = crearBoton(x, y, 76, 58, "$320",tipoCasilla.VERDE,"Pennylvania_Ave");
                     newLabel = crearLabel(x, y, Color.green);
                     break;
                 case 5:
-                    newButton = crearBoton(x, y, 76, 58, "$200",tipoCasilla.ESTACION,"");
+                    newButton = crearBoton(x, y, 76, 58, "$200",tipoCasilla.ESTACION,"Short_Line_R_R");
                     break;
                 case 6:
-                    newButton = crearBoton(x, y, 76, 58, "Fortuna",tipoCasilla.FORTUNA,"");
+                    newButton = crearBoton(x, y, 76, 58, "Fortuna",tipoCasilla.FORTUNA,"Chance");
                     break;
                 case 7:
-                    newButton = crearBoton(x, y, 76, 58, "$350",tipoCasilla.AZUL,"");
+                    newButton = crearBoton(x, y, 76, 58, "$350",tipoCasilla.AZUL,"Park_Place");
                     newLabel = crearLabel(x, y, Color.blue);
                     break;
                 case 8:
-                    newButton = crearBoton(x, y, 76, 58, "$75",tipoCasilla.IMPUESTO,"");
+                    newButton = crearBoton(x, y, 76, 58, "$75",tipoCasilla.IMPUESTO,"Luxury_Tax");
                     break;//impuesto a lujos
                 case 9:
-                    newButton = crearBoton(x, y, 76, 58, "$400",tipoCasilla.AZUL,"");
+                    newButton = crearBoton(x, y, 76, 58, "$400",tipoCasilla.AZUL,"Boardwalk");
                     newLabel = crearLabel(x, y, Color.blue);
                     break;
                 case 10:
-                    newButton = crearBoton(x, y, 76, 58, "Esquina",tipoCasilla.ESQUINA,"");
+                    newButton = crearBoton(x, y, 76, 58, "Go",tipoCasilla.ESQUINA,"Go");
                     break;
                 default:
                     newButton = crearBoton(x, y, 76, 58, "hola",tipoCasilla.ESQUINA,"");
@@ -222,39 +222,39 @@ public class Tablero extends javax.swing.JFrame {
             newLabel=null;
             switch(i){
                 case 10:
-                    newButton = crearBoton(x, y, 76, 58, "$60",tipoCasilla.CAFE,"");
+                    newButton = crearBoton(x, y, 76, 58, "$60",tipoCasilla.CAFE,"Mediterranean_Ave");
                     newLabel = crearLabel(x, y, new java.awt.Color(204, 102, 0));//cafe
                     break;
                 case 9:
-                    newButton = crearBoton(x, y, 76, 58, "Arca",tipoCasilla.ARCA,"");
+                    newButton = crearBoton(x, y, 76, 58, "Arca",tipoCasilla.ARCA,"Community_Chest");
                     break;
                 case 8:
-                    newButton = crearBoton(x, y, 76, 58, "$60",tipoCasilla.CAFE,"");
+                    newButton = crearBoton(x, y, 76, 58, "$60",tipoCasilla.CAFE,"Baltic_Ave");
                     newLabel = crearLabel(x, y, new java.awt.Color(204, 102, 0));//cafe
                     break;
                 case 7:
-                    newButton = crearBoton(x, y, 76, 58, "<html>10% or $200<html>",tipoCasilla.IMPUESTO,"");
+                    newButton = crearBoton(x, y, 76, 58, "<html>10% or $200<html>",tipoCasilla.IMPUESTO,"Income_Tax");
                     break;
                 case 6:
-                    newButton = crearBoton(x, y, 76, 58, "$200",tipoCasilla.ESTACION,"");
+                    newButton = crearBoton(x, y, 76, 58, "$200",tipoCasilla.ESTACION,"Reading_Raiload");
                     break;
                 case 5:
-                    newButton = crearBoton(x, y, 76, 58, "$100",tipoCasilla.CELESTE,"");
+                    newButton = crearBoton(x, y, 76, 58, "$100",tipoCasilla.CELESTE,"Oriental_Ave");
                     newLabel = crearLabel(x, y, Color.cyan);
                     break;
                 case 4:
-                    newButton = crearBoton(x, y, 76, 58, "Fortuna",tipoCasilla.FORTUNA,"");
+                    newButton = crearBoton(x, y, 76, 58, "Fortuna",tipoCasilla.FORTUNA,"Chance");
                     break;
                 case 3:
-                    newButton = crearBoton(x, y, 76, 58, "$100",tipoCasilla.CELESTE,"");
+                    newButton = crearBoton(x, y, 76, 58, "$100",tipoCasilla.CELESTE,"Vermont_Ave");
                     newLabel = crearLabel(x, y, Color.cyan);
                     break;
                 case 2:
-                    newButton = crearBoton(x, y, 76, 58, "$120",tipoCasilla.CELESTE,"");
+                    newButton = crearBoton(x, y, 76, 58, "$120",tipoCasilla.CELESTE,"Connecticut_Ave");
                     newLabel = crearLabel(x, y, Color.cyan);
                     break;
                 case 1:
-                    newButton = crearBoton(x, y, 76, 58, "Carcel",tipoCasilla.ESQUINA,"");
+                    newButton = crearBoton(x, y, 76, 58, "Carcel",tipoCasilla.ESQUINA,"In_Jail");
                     break;
                 default:
                     newButton = crearBoton(x, y, 76, 58, "hola",tipoCasilla.ESQUINA,"");
@@ -272,36 +272,36 @@ public class Tablero extends javax.swing.JFrame {
             newLabel=null;
             switch(i){
                 case 9:
-                    newButton = crearBoton(x, y, 76, 58, "$140",tipoCasilla.ROSA,"");
+                    newButton = crearBoton(x, y, 76, 58, "$140",tipoCasilla.ROSA,"St_Charles_Place");
                     newLabel = crearLabel(x, y,Color.pink);
                     break;
                 case 8:
-                    newButton = crearBoton(x, y, 76, 58, "$150",tipoCasilla.IMPUESTO,"");
+                    newButton = crearBoton(x, y, 76, 58, "$150",tipoCasilla.SERVICIO,"Electric_Company");
                     break;//servicio de luz
                 case 7:
-                    newButton = crearBoton(x, y, 76, 58, "$140",tipoCasilla.ROSA,"");
+                    newButton = crearBoton(x, y, 76, 58, "$140",tipoCasilla.ROSA,"States_Ave");
                     newLabel = crearLabel(x, y,Color.pink);
                     break;
                 case 6:
-                    newButton = crearBoton(x, y, 76, 58, "$160",tipoCasilla.ROSA,"");
+                    newButton = crearBoton(x, y, 76, 58, "$160",tipoCasilla.ROSA,"Virginia_Ave");
                     newLabel = crearLabel(x, y,Color.pink);
                     break;
                 case 5:
-                    newButton = crearBoton(x, y, 76, 58, "$200",tipoCasilla.ESTACION,"");
+                    newButton = crearBoton(x, y, 76, 58, "$200",tipoCasilla.ESTACION,"Pennsylvania_R_R");
                     break;
                 case 4:
-                    newButton = crearBoton(x, y, 76, 58, "180",tipoCasilla.NARANJA,"");
+                    newButton = crearBoton(x, y, 76, 58, "$180",tipoCasilla.NARANJA,"St_James_Place");
                     newLabel = crearLabel(x, y,Color.orange);
                     break;
                 case 3:
-                    newButton = crearBoton(x, y, 76, 58, "Fortuna",tipoCasilla.FORTUNA,"");
+                    newButton = crearBoton(x, y, 76, 58, "Fortuna",tipoCasilla.FORTUNA,"Chance");
                     break;
                 case 2:
-                    newButton = crearBoton(x, y, 76, 58, "180",tipoCasilla.NARANJA,"");
+                    newButton = crearBoton(x, y, 76, 58, "$180",tipoCasilla.NARANJA,"Tennessee_Ave");
                     newLabel = crearLabel(x, y,Color.orange);
                     break;
                 case 1:
-                    newButton = crearBoton(x, y, 76, 58, "200",tipoCasilla.NARANJA,"");
+                    newButton = crearBoton(x, y, 76, 58, "$200",tipoCasilla.NARANJA,"New_York_Ave");
                     newLabel = crearLabel(x, y,Color.orange);
                     break;
                 default:
