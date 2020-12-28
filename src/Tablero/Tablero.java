@@ -6,25 +6,24 @@
 
 package Tablero;
 
-import java.awt.Button;
+import Cliente.MonopolyCliente;
 import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.Icon;
+import java.io.IOException;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 /**
  *
  * @author Ray
  */
 public class Tablero extends javax.swing.JFrame {
-
+    MonopolyCliente refClient;
     /**
      * Creates new form Tablero
      */
@@ -50,6 +49,16 @@ public class Tablero extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         Logo = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txaChat = new javax.swing.JTextArea();
+        lbldado1 = new javax.swing.JLabel();
+        txfMensaje = new javax.swing.JTextField();
+        lbldado2 = new javax.swing.JLabel();
+        btnEnviar = new javax.swing.JButton();
+        btnLanzar = new javax.swing.JButton();
+        lblTurno = new javax.swing.JLabel();
+        lblUser = new javax.swing.JLabel();
+        btnMyCarts = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1200, 680));
@@ -79,23 +88,148 @@ public class Tablero extends javax.swing.JFrame {
                 .addContainerGap(598, Short.MAX_VALUE))
         );
 
+        txaChat.setColumns(20);
+        txaChat.setRows(5);
+        jScrollPane1.setViewportView(txaChat);
+
+        lbldado1.setBackground(new java.awt.Color(0, 0, 0));
+        lbldado1.setFont(new java.awt.Font("Dialog", 0, 48)); // NOI18N
+        lbldado1.setForeground(new java.awt.Color(255, 255, 255));
+        lbldado1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbldado1.setText("0");
+        lbldado1.setOpaque(true);
+
+        lbldado2.setBackground(new java.awt.Color(0, 0, 0));
+        lbldado2.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
+        lbldado2.setForeground(new java.awt.Color(255, 255, 255));
+        lbldado2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbldado2.setText("0");
+        lbldado2.setOpaque(true);
+
+        btnEnviar.setText("Enviar");
+        btnEnviar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEnviarActionPerformed(evt);
+            }
+        });
+
+        btnLanzar.setText("Lanzar Dados");
+        btnLanzar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLanzarActionPerformed(evt);
+            }
+        });
+
+        lblTurno.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        lblTurno.setText("Turno: ");
+
+        lblUser.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        lblUser.setText("Usuario: ");
+
+        btnMyCarts.setBackground(new java.awt.Color(0, 153, 153));
+        btnMyCarts.setFont(new java.awt.Font("Dubai", 0, 14)); // NOI18N
+        btnMyCarts.setText("Mis Cartas");
+        btnMyCarts.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txfMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnEnviar)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblTurno)
+                                    .addComponent(lblUser))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnMyCarts)))
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(74, 74, 74)
+                                .addComponent(btnLanzar))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lbldado2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(35, 35, 35)
+                                .addComponent(lbldado1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblUser)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblTurno))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(btnMyCarts, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txfMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEnviar))
+                .addGap(49, 49, 49)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbldado1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbldado2, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(btnLanzar)
+                .addGap(48, 48, 48))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarActionPerformed
+        try {
+            // TODO add your handling code here:
+
+            if (txfMensaje.getText().trim().equals(""))
+                JOptionPane.showMessageDialog(this, "Sin mensaje para enviar");
+            else{
+            
+                refClient.hiloCliente.writer.writeInt(2);
+                refClient.hiloCliente.writer.writeUTF(txfMensaje.getText());
+                txfMensaje.setText("");
+            }
+        } catch (IOException ex) {
+            
+        }
+    }//GEN-LAST:event_btnEnviarActionPerformed
+
+    private void btnLanzarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLanzarActionPerformed
+        try {
+            if(refClient.hiloCliente.getIdentificador() == refClient.hiloCliente.getTurnoActual()){
+                refClient.hiloCliente.writer.writeInt(3);
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "No es su turno!!!!");
+            }            
+            //if (btnLanzarDados.isEnabled())
+            //    btnLanzarDados.setEnabled(false);
+        } catch (IOException ex) {
+            
+        }
+    }//GEN-LAST:event_btnLanzarActionPerformed
     public void transparancia(JButton JB){//sirve para hacer que un boton
                                         //desaparesca momentaneamente
         JB.setOpaque(false);
@@ -343,47 +477,51 @@ public class Tablero extends javax.swing.JFrame {
         
         return newLabel;
     }
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Tablero.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Tablero.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Tablero.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Tablero.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Tablero().setVisible(true);
-            }
-        });
+    
+    
+    public void addMensaje(String msj){
+        txaChat.append(msj + "\n");
     }
-
+    
+    public void lanzarDados(int d1, int d2){
+        this.lbldado1.setText(d1 + "");
+        this.lbldado2.setText(d2 + "");
+    }
+    
+    public void setUser(String user){
+        this.lblUser.setText("Usuario: " + user);
+    }
+    
+    public void setTurno(String user){
+        this.lblTurno.setText("Turno: " + user);
+    }
+    
+    public void setRefCliente(MonopolyCliente client){
+        this.refClient = client;
+    }
+    
+    
+    
+    
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Logo;
+    private javax.swing.JButton btnEnviar;
+    private javax.swing.JButton btnLanzar;
+    private javax.swing.JButton btnMyCarts;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblTurno;
+    private javax.swing.JLabel lblUser;
+    private javax.swing.JLabel lbldado1;
+    private javax.swing.JLabel lbldado2;
+    private javax.swing.JTextArea txaChat;
+    private javax.swing.JTextField txfMensaje;
     // End of variables declaration//GEN-END:variables
+
     
-    
+
     /*class FondoPanel extends JPanel{//hi
         
         private Image imagen;
@@ -429,4 +567,6 @@ enum tipoCasilla{
     SERVICIO,
     IMPUESTO;
 }
+
+
 
