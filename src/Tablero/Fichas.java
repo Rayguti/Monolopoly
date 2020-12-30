@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -207,6 +208,7 @@ public class Fichas extends javax.swing.JFrame {
 class AccionBoton implements ActionListener{
     boolean adquirido=false;
     String nombre;
+    int posicion;
     Tablero refTablero;
     Fichas refFichas;
 
@@ -218,6 +220,11 @@ class AccionBoton implements ActionListener{
     
     @Override
     public void actionPerformed(ActionEvent arg0) {
+        try{
+        refTablero.refClient.hiloCliente.writer.writeInt(posicion);
+        refTablero.refClient.hiloCliente.writer.writeUTF(nombre);
+        }catch(IOException e){}
+        
         if(!adquirido){
             refFichas.dispose();
         }else{

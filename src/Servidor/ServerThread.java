@@ -10,6 +10,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 import java.util.Random;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -94,6 +95,28 @@ public class ServerThread extends Thread{
                        
                     break;
                     case 5:
+                        boolean disponible = true;
+                        writer.writeInt(5);
+                        while(disponible){
+                            int posicion = reader.readInt();
+                            String nombre= reader.readUTF();
+                            for(int i=0;i<server.fichasDiponibles.length;i++){
+                                if(i==posicion){
+                                    if(!server.fichasDiponibles[i]){
+                                        server.fichasDiponibles[i]=true;
+                                        disponible = false;
+                                        writer.writeBoolean(disponible);
+                                        writer.writeUTF(nombre);
+                                        break;
+                                    }else{
+                                        JOptionPane.showMessageDialog(null, "Esta ficha no esta disponible");
+                                        writer.writeBoolean(disponible);
+                                    }
+                                }
+                            }
+                        }
+                        
+                    break;
                         
                     
                     

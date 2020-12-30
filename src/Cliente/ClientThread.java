@@ -5,6 +5,7 @@
  */
 package Cliente;
 
+import Tablero.Fichas;
 import Tablero.Tablero;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -68,6 +69,18 @@ public class ClientThread extends Thread{
                     case 4:
                         this.dinero=1500;
                         refPantalla.setDinero(dinero);
+                    break;
+                    case 5:
+                        boolean disponible =true;
+                        Fichas f= new Fichas(refPantalla);
+                        f.setVisible(true);
+                        while(disponible){
+                            disponible = reader.readBoolean();
+                            if(!disponible) {
+                                f.dispose();
+                                reader.readUTF();
+                            }
+                        }
                     break;
                 }
             } catch (IOException ex) {

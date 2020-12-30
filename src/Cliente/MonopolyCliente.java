@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
  * @author Daniel Cascante
  */
 public class MonopolyCliente {
-    Socket socketRef;
+    public Socket socketRef;
     Tablero refPantalla;
     JLabel ficha;
     public ClientThread hiloCliente;
@@ -38,8 +38,8 @@ public class MonopolyCliente {
             hiloCliente.writer.writeUTF(nombre); //instruccion para el switch del thraed servidor
             refPantalla.setTitle(nombre);
             refPantalla.setUser(nombre);
-            Fichas f= new Fichas(refPantalla);
-            f.setVisible(true);
+            hiloCliente.writer.write(5);
+            
         }
         catch(Exception e){
             System.out.println(e.getMessage());
