@@ -23,7 +23,8 @@ import javax.swing.JTextField;
  * @author Ray
  */
 public class Tablero extends javax.swing.JFrame {
-    MonopolyCliente refClient;
+    public MonopolyCliente refClient;
+    public JButton[] arrayBotones= new JButton[40];
     /**
      * Creates new form Tablero
      */
@@ -34,8 +35,14 @@ public class Tablero extends javax.swing.JFrame {
         //this.setContentPane(fondo);
         initComponents();
         setIconImage(new ImageIcon("src/imagenes/icono.png").getImage());
+        setSize(1200, 676);
+        for(int i=0;i<arrayBotones.length;i++){
+            arrayBotones[i]=null;
+        }
         crearCasillas();
-        //jPanel1.setBackground(new java.awt.Color(51,255,153));
+        /*for(int i=0;i<arrayBotones.length;i++){
+            System.out.println(arrayBotones[i].getText()); 
+        }*/
     }
 
     /**
@@ -58,15 +65,17 @@ public class Tablero extends javax.swing.JFrame {
         btnLanzar = new javax.swing.JButton();
         lblTurno = new javax.swing.JLabel();
         lblUser = new javax.swing.JLabel();
-        btnMyCarts = new javax.swing.JButton();
+        btnProprieties = new javax.swing.JButton();
+        lbDinero = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1200, 680));
+        setPreferredSize(new java.awt.Dimension(1142, 638));
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(51, 255, 153));
         jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jPanel1.setPreferredSize(new java.awt.Dimension(836, 680));
+        jPanel1.setPreferredSize(new java.awt.Dimension(836, 638));
 
         Logo.setBackground(new java.awt.Color(0, 51, 51));
         Logo.setIcon(new ImageIcon("src/Imagenes/icono.png"));
@@ -85,7 +94,7 @@ public class Tablero extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(82, 82, 82)
                 .addComponent(Logo)
-                .addContainerGap(598, Short.MAX_VALUE))
+                .addContainerGap(556, Short.MAX_VALUE))
         );
 
         txaChat.setColumns(20);
@@ -126,10 +135,21 @@ public class Tablero extends javax.swing.JFrame {
         lblUser.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         lblUser.setText("Usuario: ");
 
-        btnMyCarts.setBackground(new java.awt.Color(0, 153, 153));
-        btnMyCarts.setFont(new java.awt.Font("Dubai", 0, 14)); // NOI18N
-        btnMyCarts.setText("Mis Cartas");
-        btnMyCarts.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnProprieties.setBackground(new java.awt.Color(0, 153, 153));
+        btnProprieties.setFont(new java.awt.Font("Dubai", 0, 14)); // NOI18N
+        btnProprieties.setText("Propiedades");
+        btnProprieties.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        lbDinero.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lbDinero.setText("$0");
+
+        jButton1.setBackground(new java.awt.Color(255, 204, 0));
+        jButton1.setText("<html>Get out of jail free");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -139,7 +159,7 @@ public class Tablero extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(10, 10, 10)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1)
                             .addGroup(layout.createSequentialGroup()
@@ -152,48 +172,53 @@ public class Tablero extends javax.swing.JFrame {
                                     .addComponent(lblTurno)
                                     .addComponent(lblUser))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnMyCarts)))
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnProprieties, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lbDinero, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(lbldado2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lbldado1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(74, 74, 74)
-                                .addComponent(btnLanzar))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lbldado2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(35, 35, 35)
-                                .addComponent(lbldado1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnLanzar)
+                        .addGap(41, 41, 41))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblUser)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lblTurno))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(btnMyCarts, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(1, 1, 1)
+                        .addComponent(btnProprieties, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbDinero, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txfMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEnviar))
-                .addGap(49, 49, 49)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbldado1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbldado2, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbldado2, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbldado1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnLanzar)
-                .addGap(48, 48, 48))
+                .addGap(65, 65, 65))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -216,6 +241,9 @@ public class Tablero extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnEnviarActionPerformed
 
+    public void setDinero(int D){
+        lbDinero.setText("$"+D);
+    }
     private void btnLanzarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLanzarActionPerformed
         try {
             if(refClient.hiloCliente.getIdentificador() == refClient.hiloCliente.getTurnoActual()){
@@ -230,6 +258,10 @@ public class Tablero extends javax.swing.JFrame {
             
         }
     }//GEN-LAST:event_btnLanzarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
     public void transparancia(JButton JB){//sirve para hacer que un boton
                                         //desaparesca momentaneamente
         JB.setOpaque(false);
@@ -246,6 +278,7 @@ public class Tablero extends javax.swing.JFrame {
         JLabel newLabel;
         int x=0;
         int y=0;
+        int posicionArray=19;
         for(int i=0;i<10;i+=1){
             newLabel=null;
             switch(i){
@@ -295,6 +328,8 @@ public class Tablero extends javax.swing.JFrame {
                 jPanel1.add(newLabel);
             }
             jPanel1.add(newButton);
+            arrayBotones[posicionArray]=newButton;
+            posicionArray++;
             x+=76;
         }
         y=0;
@@ -347,11 +382,14 @@ public class Tablero extends javax.swing.JFrame {
                 newLabel.setVisible(true);
                 jPanel1.add(newLabel);
             }
+            arrayBotones[posicionArray]=newButton;
+            posicionArray++;
             jPanel1.add(newButton);
             y+=58;
         }
         y-=58;
         x-=76;
+        posicionArray=0;
         for(int i=10;i>0;i--){
             newLabel=null;
             switch(i){
@@ -398,6 +436,8 @@ public class Tablero extends javax.swing.JFrame {
                 jPanel1.add(newLabel);
             }
             jPanel1.add(newButton);
+            arrayBotones[posicionArray]=newButton;
+            posicionArray++;
             x-=76;
         }
         y-=58;
@@ -445,6 +485,8 @@ public class Tablero extends javax.swing.JFrame {
                 newLabel.setVisible(true);
                 jPanel1.add(newLabel);
             }
+            arrayBotones[posicionArray]=newButton;
+            posicionArray++;
             jPanel1.add(newButton);
             y-=58;
         }
@@ -509,9 +551,11 @@ public class Tablero extends javax.swing.JFrame {
     private javax.swing.JLabel Logo;
     private javax.swing.JButton btnEnviar;
     private javax.swing.JButton btnLanzar;
-    private javax.swing.JButton btnMyCarts;
+    private javax.swing.JButton btnProprieties;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lbDinero;
     private javax.swing.JLabel lblTurno;
     private javax.swing.JLabel lblUser;
     private javax.swing.JLabel lbldado1;

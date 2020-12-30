@@ -23,6 +23,7 @@ public class MonopolyServer {
     private int turno;
     private boolean partidaIniciada = false;
     public int lanzamientoInicial[] = new int[6];
+    private boolean[] fichasDiponibles=new boolean[8];
 
     public MonopolyServer(ServerFrame refPantalla) {
         this.refPantalla = refPantalla;

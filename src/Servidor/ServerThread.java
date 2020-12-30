@@ -18,8 +18,8 @@ import java.util.Random;
 public class ServerThread extends Thread{
     private int id;
     private Socket socketRef;
-    private DataInputStream reader;
-    private DataOutputStream writer;
+    public DataInputStream reader;
+    public DataOutputStream writer;
     private String nombre;
     private boolean running = true;
     MonopolyServer server;
@@ -93,6 +93,8 @@ public class ServerThread extends Thread{
                        //}
                        
                     break;
+                    case 5:
+                        
                     
                     
                 }
@@ -100,7 +102,10 @@ public class ServerThread extends Thread{
                 
             }
         }
+        
+    }
+    public Socket getRefSocket(){
+        return socketRef;
     }    
-    
-    
+
 }

@@ -10,6 +10,7 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -24,6 +25,7 @@ public class ClientThread extends Thread{
     private Tablero  refPantalla;
     private int id ;
     private int turnoActual = 0;
+    private int dinero = 0;
 
     public ClientThread(Socket socketRef, Tablero refPantalla) throws IOException {
         this.socketRef = socketRef;
@@ -44,6 +46,11 @@ public class ClientThread extends Thread{
                         this.id = reader.readInt();
                         this.turnoActual = reader.readInt();
                         refPantalla.setTurno(reader.readUTF());
+                        /*if(this.id>=7){
+                            System.out.println("entre");
+                            JOptionPane.showMessageDialog(null, "No hay mas campos");
+                            System.exit(0);
+                        }*/
                     break;
                     case 2: // pasan un mensaje por el chat
                         String usuario = reader.readUTF();
@@ -58,10 +65,10 @@ public class ClientThread extends Thread{
                         refPantalla.setTurno(reader.readUTF());
                         refPantalla.lanzarDados(dado1, dado2);
                     break;
-                    /*case 4: //partida iniciada
-                        refPantalla.pintarPartidaIniciada();
-                        
-                        break;*/
+                    case 4:
+                        this.dinero=1500;
+                        refPantalla.setDinero(dinero);
+                    break;
                 }
             } catch (IOException ex) {
                 

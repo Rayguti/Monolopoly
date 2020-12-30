@@ -5,12 +5,16 @@
  */
 package Servidor;
 
+import java.io.IOException;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Daniel Cascante
  */
 public class ServerFrame extends javax.swing.JFrame {
     MonopolyServer serverRef;
+    boolean partidaIniciada =false;
     /**
      * Creates new form ServerFrame
      */
@@ -39,9 +43,13 @@ public class ServerFrame extends javax.swing.JFrame {
         jScrollPane1.setViewportView(txaServerMsj);
 
         btnIniciar.setBackground(new java.awt.Color(0, 255, 0));
-        btnIniciar.setForeground(new java.awt.Color(0, 0, 0));
         btnIniciar.setText("Iniciar Partida");
         btnIniciar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnIniciar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIniciarActionPerformed(evt);
+            }
+        });
 
         lblAdmin.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         lblAdmin.setText("Administrador:");
@@ -75,6 +83,23 @@ public class ServerFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
+        if(!partidaIniciada&&serverRef.conexiones.size()>1){
+            JOptionPane.showMessageDialog(null, "La partida ha iniciado");
+            serverRef.iniciarPartida();
+            ServerThread aux;
+            try{
+                for(int i=0;i<serverRef.conexiones.size();i++) {
+                    aux=serverRef.conexiones.get(i);
+                    aux.writer.writeInt(4);//
+                }
+            }catch(IOException ex){
+                JOptionPane.showMessageDialog(null, "Algo salio mal revisa SeverFrame");
+            }
+        }else
+            JOptionPane.showMessageDialog(null, "Jugadores insuficientes");
+    }//GEN-LAST:event_btnIniciarActionPerformed
 
     /**
      * @param args the command line arguments
