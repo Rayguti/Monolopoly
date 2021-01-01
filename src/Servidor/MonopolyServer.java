@@ -88,4 +88,5 @@ public class MonopolyServer {
                 refPantalla.addMsj(".: Conexion denegada, partida ya inicio");
         }
     }
+    
 }

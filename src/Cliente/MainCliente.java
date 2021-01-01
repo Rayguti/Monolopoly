@@ -13,12 +13,12 @@ import Tablero.Tablero;
 public class MainCliente {
    public static void main(String[] args){
        try{
+           //System.out.println("1");
            Tablero pantalla = new Tablero();
            MonopolyCliente client = new MonopolyCliente(pantalla);
            pantalla.setVisible(true);
            client.conectar();
        } catch(Exception e) {
-           
        }
    } 
 }

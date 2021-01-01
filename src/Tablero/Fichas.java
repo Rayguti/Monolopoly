@@ -27,14 +27,14 @@ public class Fichas extends javax.swing.JFrame {
     public Fichas(Tablero t) {
         refTablero=t;
         initComponents();
-        setPropiedades(btnBarco, "Barco.png");
-        setPropiedades(btnCarro, "Carro.png");
-        setPropiedades(btnCarreta, "Carreta.png");
-        setPropiedades(btnPerro, "Perro.png");
-        setPropiedades(btnDedal, "Dedal.png");
-        setPropiedades(btnSombrero, "Sombrero.png");
-        setPropiedades(btnPlancha, "Plancha.png");
-        setPropiedades(btnZapato, "Zapato.png");
+        setPropiedades(btnBarco, "Barco",0);
+        setPropiedades(btnCarro, "Carro",1);
+        setPropiedades(btnCarreta, "Carreta",2);
+        setPropiedades(btnPerro, "Perro",3);
+        setPropiedades(btnDedal, "Dedal",4);
+        setPropiedades(btnSombrero, "Sombrero",5);
+        setPropiedades(btnPlancha, "Plancha",6);
+        setPropiedades(btnZapato, "Zapato",7);
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
     }
 
@@ -144,16 +144,21 @@ public class Fichas extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    public void setPropiedades(JButton b, String m){
-        ImageIcon icon = new ImageIcon("src/Imagenes/"+m);
+    public void setPropiedades(JButton b, String m, int i){
+        ImageIcon icon = new ImageIcon("src/Imagenes/"+m+".png");
         int ancho=b.getWidth();
         int alto=b.getHeight();
         icon = new ImageIcon(icon.getImage().getScaledInstance(ancho, alto,Image.SCALE_DEFAULT));
         //b.setBackground(Color.BLACK);
-        b.addActionListener(new AccionBoton(refTablero,this));
+        b.addActionListener(new AccionBoton(refTablero,this,i,m));
         b.setIcon(icon);
+        this.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+     
     }
-
+    public void no_Disponible(){
+        JOptionPane.showConfirmDialog(this, "Esta ficha no esta disponible");
+    }
+    
     @Override
     public void dispose() {
         super.dispose(); //To change body of generated methods, choose Tools | Templates.
@@ -212,24 +217,24 @@ class AccionBoton implements ActionListener{
     Tablero refTablero;
     Fichas refFichas;
 
-    public AccionBoton(Tablero refTablero,Fichas f) {
+    public AccionBoton(Tablero refTablero,Fichas f,int p,String n) {
         this.refTablero = refTablero;
         this.refFichas = f;
+        this.posicion=p;
+        this.nombre=n;
     }
     
     
     @Override
     public void actionPerformed(ActionEvent arg0) {
-        try{
-        refTablero.refClient.hiloCliente.writer.writeInt(posicion);
-        refTablero.refClient.hiloCliente.writer.writeUTF(nombre);
-        }catch(IOException e){}
+        refTablero.refClient.hiloCliente.writeIntUtf(posicion,nombre);
+       
         
-        if(!adquirido){
+        /*if(!adquirido){
             refFichas.dispose();
         }else{
             JOptionPane.showMessageDialog(null, "Esta ficha no esta disponible");
-        }
+        }*/
     }
     
 }

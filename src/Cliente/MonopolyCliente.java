@@ -7,6 +7,7 @@ package Cliente;
 
 import Tablero.Fichas;
 import Tablero.Tablero;
+import java.io.IOException;
 import java.net.Socket;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -38,7 +39,7 @@ public class MonopolyCliente {
             hiloCliente.writer.writeUTF(nombre); //instruccion para el switch del thraed servidor
             refPantalla.setTitle(nombre);
             refPantalla.setUser(nombre);
-            hiloCliente.writer.write(5);
+            hiloCliente.writer.writeInt(5);
             
         }
         catch(Exception e){
@@ -47,5 +48,13 @@ public class MonopolyCliente {
         
         
         
+    }
+
+    public JLabel getFicha() {
+        return ficha;
+    }
+
+    public void setFicha(JLabel ficha) {
+        this.ficha = ficha;
     }
 }

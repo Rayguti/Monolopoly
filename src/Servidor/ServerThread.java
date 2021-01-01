@@ -8,8 +8,13 @@ package Servidor;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,9 +23,12 @@ import javax.swing.JOptionPane;
  */
 public class ServerThread extends Thread{
     private int id;
+    private String nombreFicha;
     private Socket socketRef;
     public DataInputStream reader;
     public DataOutputStream writer;
+    public ObjectInputStream readerObject;
+    public ObjectOutputStream writerObject;
     private String nombre;
     private boolean running = true;
     MonopolyServer server;
@@ -29,6 +37,8 @@ public class ServerThread extends Thread{
         this.socketRef = socketRef;
         reader = new DataInputStream(socketRef.getInputStream());
         writer = new DataOutputStream(socketRef.getOutputStream());
+        readerObject = new ObjectInputStream(socketRef.getInputStream());
+        writerObject = new ObjectOutputStream(socketRef.getOutputStream());
         this.server = server;
         this.id = id;
     }
@@ -86,6 +96,10 @@ public class ServerThread extends Thread{
                         
                     break;
                     case 4:
+                        writer.writeInt(server.conexiones.size()*20);
+                        for(int i=0;i<server.conexiones.size();i++){
+                            writer.writeUTF(server.conexiones.get(i).nombreFicha);
+                        }
                        //server.iniciarPartida();
                        //for (int i = 0; i < server.conexiones.size(); i++) {
                             //ThreadServidor current = server.conexiones.get(i);
@@ -99,7 +113,7 @@ public class ServerThread extends Thread{
                         writer.writeInt(5);
                         while(disponible){
                             int posicion = reader.readInt();
-                            String nombre= reader.readUTF();
+                            nombreFicha= reader.readUTF();
                             for(int i=0;i<server.fichasDiponibles.length;i++){
                                 if(i==posicion){
                                     if(!server.fichasDiponibles[i]){
@@ -109,7 +123,6 @@ public class ServerThread extends Thread{
                                         writer.writeUTF(nombre);
                                         break;
                                     }else{
-                                        JOptionPane.showMessageDialog(null, "Esta ficha no esta disponible");
                                         writer.writeBoolean(disponible);
                                     }
                                 }
@@ -117,11 +130,15 @@ public class ServerThread extends Thread{
                         }
                         
                     break;
+                    case 6://crear el jlabel
+                        //ficha = (JLabel)readerObject.readObject();
+                    break;
                         
                     
                     
                 }
             } catch (IOException ex) {
+                System.out.println("XD");
                 
             }
         }
@@ -129,6 +146,10 @@ public class ServerThread extends Thread{
     }
     public Socket getRefSocket(){
         return socketRef;
-    }    
+    }
+
+    public String getNombreFicha() {
+        return nombreFicha;
+    }
 
 }
