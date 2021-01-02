@@ -17,8 +17,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
 import javax.swing.JLayeredPane;
 
 /**
@@ -51,6 +49,7 @@ public class Tablero extends javax.swing.JFrame {
         crearCasillas();
         jLabel1.setIcon(new ImageIcon("src/Imagenes/icono.png"));
         this.arrayFichas = new ArrayList<>();
+       
         //PanelTablero.findComponentAt(WIDTH, WIDTH)
         /*for(int i=0;i<arrayBotones.length;i++){
             System.out.println(arrayBotones[i].getText()); 

@@ -13,7 +13,6 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -23,8 +22,6 @@ public class ClientThread extends Thread{
     private Socket socketRef;
     public DataInputStream reader;
     public DataOutputStream writer;
-    public ObjectInputStream readerObject;
-    public ObjectOutputStream writerObject;
     private String nombre;
     private boolean running = true;
     private Tablero  refPantalla;
@@ -36,11 +33,9 @@ public class ClientThread extends Thread{
         this.socketRef = socketRef;
         reader = new DataInputStream(socketRef.getInputStream());
         writer = new DataOutputStream(socketRef.getOutputStream());
-        readerObject = new ObjectInputStream(socketRef.getInputStream());
-        writerObject = new ObjectOutputStream(socketRef.getOutputStream());
         this.refPantalla = refPantalla;
     }
-    
+    //@Override
     public void run (){
         
         int instruccionId = 1;
@@ -94,7 +89,7 @@ public class ClientThread extends Thread{
                             if(!disponible) {
                                 //agregar el label
                                 
-                                f.dispose();
+                                f.dispose();//cierra la ventana
                                 this.nombre = reader.readUTF();
                                 refPantalla.crearFicha(this.nombre);
                             }
@@ -109,7 +104,7 @@ public class ClientThread extends Thread{
                         
                 }
             } catch (IOException ex) {
-                
+                System.out.println("XD");
             }
         }
     }

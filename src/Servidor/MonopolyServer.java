@@ -68,7 +68,7 @@ public class MonopolyServer {
     public void runServer() throws IOException{
         
         int contador = 0;
-        srv = new ServerSocket(35775);
+        srv = new ServerSocket(20000);
         String nombre = JOptionPane.showInputDialog("Introduzca Nombre de Administrador:");
         refPantalla.setAdmin(nombre);
         

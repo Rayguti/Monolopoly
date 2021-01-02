@@ -8,15 +8,8 @@ package Servidor;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-
 /**
  *
  * @author Daniel Cascante
@@ -27,8 +20,6 @@ public class ServerThread extends Thread{
     private Socket socketRef;
     public DataInputStream reader;
     public DataOutputStream writer;
-    public ObjectInputStream readerObject;
-    public ObjectOutputStream writerObject;
     private String nombre;
     private boolean running = true;
     MonopolyServer server;
@@ -37,8 +28,6 @@ public class ServerThread extends Thread{
         this.socketRef = socketRef;
         reader = new DataInputStream(socketRef.getInputStream());
         writer = new DataOutputStream(socketRef.getOutputStream());
-        readerObject = new ObjectInputStream(socketRef.getInputStream());
-        writerObject = new ObjectOutputStream(socketRef.getOutputStream());
         this.server = server;
         this.id = id;
     }
@@ -80,7 +69,7 @@ public class ServerThread extends Thread{
                         writer.writeUTF(nombre);
                         writer.writeInt(primero);
                         writer.writeInt(segundo);
-                         */
+                        */
                         int turno = server.getTurnoSiguiente();
                         String nombreDelTurno = server.conexiones.get(turno).nombre;
                         for (int i = 0; i < server.conexiones.size(); i++) {
@@ -133,9 +122,7 @@ public class ServerThread extends Thread{
                     case 6://crear el jlabel
                         //ficha = (JLabel)readerObject.readObject();
                     break;
-                        
-                    
-                    
+                    default:
                 }
             } catch (IOException ex) {
                 System.out.println("XD");

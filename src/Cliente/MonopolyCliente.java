@@ -30,7 +30,9 @@ public class MonopolyCliente {
     public void conectar(){
  
         try{
-            socketRef = new Socket("localhost", 35775);
+           
+            socketRef = new Socket("localhost", 20000);
+            //if(socketRef.isConnected()) System.out.println("Conectado");
             hiloCliente = new ClientThread(socketRef, refPantalla);
             hiloCliente.start();
             //System.exit(0);
